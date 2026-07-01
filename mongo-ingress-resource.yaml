@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: solar-ingress
+  namespace: solar-system
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /solar
+            pathType: Prefix
+            backend:
+              service:
+                name: solar-service
+                port:
+                  number: 80
