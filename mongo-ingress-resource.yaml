@@ -11,7 +11,7 @@ spec:
     - http:
         paths:
           - path: /solar(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: solar-service
