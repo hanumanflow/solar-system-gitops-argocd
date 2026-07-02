@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: solar-system-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hanumanflow/solar-system-gitops-argocd.git
+    targetRevision: HEAD
+    path: solar
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: solar-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:  
+      enabled: false
+      selfHeal: true
+      prune: true
