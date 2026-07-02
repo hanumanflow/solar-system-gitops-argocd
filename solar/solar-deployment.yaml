@@ -30,9 +30,15 @@ spec:
                 name: mongo-db-creds
                 key: MONGO_URI
            - name: MONGO_USERNAME
-             value: superuser
+             valueFrom:
+                secretKeyRef:
+                  name: mongo-db-creds
+                  key: MONGO_USERNAME
            - name: MONGO_PASSWORD
-             value: SuperPassword
+             valueFrom:
+               secretKeyRef:
+                name: mongo-db-creds
+                key: MONGO_PASSWORD
           # envFrom:
           #   - secretRef:
           #       name: mongo-db-creds
