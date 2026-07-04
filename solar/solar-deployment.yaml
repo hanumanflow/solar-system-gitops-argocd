@@ -9,7 +9,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: solar-system 
+      app: solar-system
   template:
     metadata:
       name: solar-system
@@ -18,31 +18,23 @@ spec:
     spec:
       containers:
         - name: solar-container
-          image: chowdary2001/solar-system:latest
+          image: chowdary2001/solar-system:90
           ports:
             - containerPort: 3000
               name: http
-
           env:
-           - name: MONGO_URI
-             valueFrom:
-              secretKeyRef:
-                name: mongo-db-creds
-                key: MONGO_URI
-           - name: MONGO_USERNAME
-             valueFrom:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-db-creds
+                  key: MONGO_URI
+            - name: MONGO_USERNAME
+              valueFrom:
                 secretKeyRef:
                   name: mongo-db-creds
                   key: MONGO_USERNAME
-           - name: MONGO_PASSWORD
-             valueFrom:
-               secretKeyRef:
-                name: mongo-db-creds
-                key: MONGO_PASSWORD
-          # envFrom:
-          #   - secretRef:
-          #       name: mongo-db-creds
-              
-            
-          
-
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-db-creds
+                  key: MONGO_PASSWORD
