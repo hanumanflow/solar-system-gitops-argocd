@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: solar-container
-          image: chowdary2001/solar-system:v3
+          image: chowdary2001/solar-system:prod-deployment
           ports:
             - containerPort: 3000
               name: http
